@@ -51,7 +51,7 @@
 </head>
 <body>
     <div class="dashboard">
-        <h1>Weather Dashboard</h1>
+        <h1>Indian Weather Dashboard</h1>
         <form method="POST" action="{% url 'get_weather' %}">
             {% csrf_token %}
             {{form.as_p}}

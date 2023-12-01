@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        .dashboard {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(63, 60, 60, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .weather-info {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .weather-icon {
+            width: 50px;
+            height: 50px;
+        }
+
+        p {
+            margin: 5px 0;
+            color: #221e1e;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Weather Dashboard</h1>
+        <form method="POST" action="{% url 'get_weather' %}">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" value="Submit" >
+        </form>
+        {% if data %}
+            {% for weather_data in data.data %}
+                <div class="weather-info" style="font-size: large;">
+                    <p>City: {{ weather_data.city_name }}, {{ weather_data.country_code }}</p>
+                    <p>Temperature: {{ weather_data.temp }}°C</p>
+                    <p>Description: {{ weather_data.weather.description }}</p>
+                    <p>Humidity: {{ weather_data.rh }}%</p>
+                    <p>Wind: {{ weather_data.wind_spd }} m/s from {{ weather_data.wind_cdir_full }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No weather data available.</p>
+        {% endif %}
+    </div>
+</body>
+</html>

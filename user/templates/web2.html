@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        Style to center the content
+        .centered-content {
+            text-align: center;
+            margin: auto;
+            width: 50%; /* Adjust the width as needed */
+        }
+
+        /* Style for each item in the loop */
+        .loop-item {
+            /* display: inline-block; */
+            text-align: center; /* Adjust alignment as needed */
+            margin: 10px; /* Adjust margin as needed */
+            background-color: #a9a8a8; /* Set the background color */
+            padding: 10px;
+            border-radius: 10px;
+        }
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    {% for data in dataset %}
+    <div class="loop-item">
+        <b>id : </b>{{data.id}}<br>
+        <b>userId : </b>{{data.userId}}<br>
+        <b>title : </b>{{data.title}}<br>
+        <b>completed : </b>{{data.completed}}
+    </div>
+    {% endfor %}   
+</body>
+</html>

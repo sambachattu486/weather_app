@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeoplePage</title>
+    <style>
+        h1{
+            color: burlywood;
+        }
+        body{
+            font-size: 20px;
+        }
+        .bodyDiv{
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div name="bodyDiv">
+        {% for data in dataset %}
+        {{data.name}}<br/>
+        {{data.city}}<br/>
+        {{data.pin}}
+        <hr>
+    {% endfor %}
+    </div>
+
+    <a href="/">home</a>
+</body>
+</html>
